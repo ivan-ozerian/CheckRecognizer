@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 @Service("checkRecognizeService")
 public class DefaultCheckRecognizeService implements CheckRecognizeService {
 
-    @Value("${config.recognition.sum.regexp}")
+    @Value("${config.tesseract.recognition.sum.regexp}")
     private String sumRecognitionRegex;
 
     @Autowired

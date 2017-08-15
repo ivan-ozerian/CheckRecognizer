@@ -12,10 +12,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class SpringCoreConfig {
 
-    @Value("${config.recognition.segmentation.mode}")
+    @Value("${config.tesseract.segmentation.mode}")
     private int segmentationMode;
 
-    @Value("${config.recognition.language}")
+    @Value("${config.tesseract.language}")
     private String recognitionLanguage;
 
     @Bean
