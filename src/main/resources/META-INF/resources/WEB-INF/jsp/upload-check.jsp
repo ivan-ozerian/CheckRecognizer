@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>File Uploading Form</title>
+    <title>Image Uploading Form</title>
 </head>
 
 <body>
 <h3>File Upload:</h3>
-Select a file to upload: <br/>
+Select an image to upload and recognize: <br/>
 <form action="/recognize" method="post"
       enctype="multipart/form-data">
     <input type="file" name="image" size="50"/>
