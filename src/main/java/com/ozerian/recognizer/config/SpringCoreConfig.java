@@ -18,11 +18,15 @@ public class SpringCoreConfig {
     @Value("${config.tesseract.language}")
     private String recognitionLanguage;
 
+    @Value("${config.tesseract.datapath}")
+    private String tessdataPath;
+
     @Bean
     public ITesseract tesseract() {
         ITesseract tesseract = new Tesseract();
         tesseract.setOcrEngineMode(ITessAPI.TessOcrEngineMode.OEM_TESSERACT_ONLY);
         tesseract.setPageSegMode(segmentationMode);
+        tesseract.setDatapath(tessdataPath);
         tesseract.setLanguage(recognitionLanguage);
 
         return tesseract;
