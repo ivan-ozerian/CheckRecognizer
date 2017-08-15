@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 public class DefaultCheckRecognizeController implements CheckRecognizeController {
@@ -24,13 +25,13 @@ public class DefaultCheckRecognizeController implements CheckRecognizeController
     @Override
     @RequestMapping("/")
     public String uploadImage(Model model) {
-        model.addAttribute("test", "test");
         return "upload-check";
     }
 
     @Override
     @RequestMapping(value = "/recognize", method = RequestMethod.POST)
-    public ResponseEntity<CheckInfo> recognizeCheck(@RequestParam("image") MultipartFile image) throws IOException, TesseractException {
+    public ResponseEntity<CheckInfo> recognizeCheck(@RequestParam("image") MultipartFile image)
+            throws IOException, TesseractException, ExecutionException, InterruptedException {
 
         return checkRecognizeFacade.recognizeCheck(image);
     }
