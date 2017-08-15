@@ -6,9 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public interface CheckRecognizeFacade {
 
-    ResponseEntity<CheckInfo> recognizeCheck(MultipartFile file) throws IOException, TesseractException;
+    ResponseEntity<CheckInfo> recognizeCheck(MultipartFile file) throws IOException, TesseractException, ExecutionException, InterruptedException;
 
 }

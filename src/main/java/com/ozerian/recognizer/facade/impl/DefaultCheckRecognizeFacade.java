@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component("checkRecognizeFacade")
@@ -22,7 +23,12 @@ public class DefaultCheckRecognizeFacade implements CheckRecognizeFacade {
     private AtomicInteger idCounter = new AtomicInteger();
 
     @Override
-    public ResponseEntity<CheckInfo> recognizeCheck(MultipartFile file) throws IOException, TesseractException {
+    public ResponseEntity<CheckInfo> recognizeCheck(MultipartFile file)
+            throws IOException, TesseractException, ExecutionException, InterruptedException {
+
+        if (file == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
         Integer checkId = idCounter.incrementAndGet();
 
